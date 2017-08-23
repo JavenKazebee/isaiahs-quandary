@@ -1,15 +1,19 @@
 package com.krazytar;
 
+import java.util.ArrayList;
+
 public class Room {
     int id;
     String name;
     String desc;
+    ArrayList<Exit> exits;
     
-    public Room(int pID, String pName, String pDesc) {
+    public Room(int pID, String pName, String pDesc, ArrayList<Exit> pExits) {
         id = pID;
         name = pName;
         desc = pDesc;
-        System.out.println("A room has been created!\nName: " + name + "\nDescription: " + desc);
+        exits = pExits;
+        System.out.println(desc);
     }
     
     public int getID() {

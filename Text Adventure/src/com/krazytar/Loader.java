@@ -2,6 +2,7 @@ package com.krazytar;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import org.jdom2.input.*;
 import org.jdom2.*;
 
@@ -19,7 +20,29 @@ public class Loader {
         Element root = doc.getRootElement();
         String name = root.getChildText("name");
         String desc = root.getChildText("desc");
-        return new Room(id, name, desc);
+        ArrayList<Exit> exits = new ArrayList();
+        if(Tools.checkExists(root.getChild("exits"))) {
+            for(Element e : root.getChild("exits").getChildren("exit")) {
+            exits.add(new Exit(
+                    Integer.parseInt(e.getChildText("room")), 
+                    e.getChildText("name"), 
+                    Tools.toArrayList(Tools.slashSeperate(e.getChildText("commands")))));
+        }
+        }
         
+        return new Room(id, name, desc, exits);
+        
+    }
+    
+    public static String commandHelp(String command) {
+        SAXBuilder sb = new SAXBuilder();
+        File input = new File("data/help/commandHelp.xml");
+        Document doc = null;
+        try {
+            doc = sb.build(input);
+        } catch(JDOMException | IOException exc) {
+            exc.printStackTrace();
+        }
+        return doc.getRootElement().getChildText(command);
     }
 }
