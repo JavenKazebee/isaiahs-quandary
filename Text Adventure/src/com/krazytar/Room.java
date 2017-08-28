@@ -13,7 +13,7 @@ public class Room {
         name = pName;
         desc = pDesc;
         exits = pExits;
-        System.out.println(desc);
+        Printer.print(desc);
     }
     
     public int getID() {

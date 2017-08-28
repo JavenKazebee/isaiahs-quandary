@@ -45,4 +45,26 @@ public class Loader {
         }
         return doc.getRootElement().getChildText(command);
     }
+    
+    public static ArrayList<Race> loadRaces() {
+        ArrayList<Race> races = new ArrayList();
+        SAXBuilder sb = new SAXBuilder();
+        File[] raceFiles = new File("data/races").listFiles();
+        for(File f : raceFiles) {
+            Document doc = null;
+            try {
+                doc = sb.build(f);
+            } catch (JDOMException | IOException exc) {
+                exc.printStackTrace();
+            }
+            races.add(new Race(
+                    doc.getRootElement().getChildText("name"),
+                    doc.getRootElement().getChildText("desc"),
+                    Integer.parseInt(doc.getRootElement().getChildText("int")),
+                    Integer.parseInt(doc.getRootElement().getChildText("ag")),
+                    Integer.parseInt(doc.getRootElement().getChildText("str"))
+            ));
+        }
+        return races;
+    }
 }

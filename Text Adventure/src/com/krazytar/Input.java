@@ -21,7 +21,7 @@ public class Input {
                     argument += com[i] + " ";
                 }
                 argument = argument.trim();
-                System.out.println(argument);
+                Printer.print(argument);
                 for(Exit e : Player.getCurrentRoom().exits) {
                     for(String c : e.commands) {
                         if(c.equals(argument)) {
@@ -35,17 +35,25 @@ public class Input {
                 }
                 
             } else {
-                System.out.println(Loader.commandHelp("go"));
+                Printer.print(Loader.commandHelp("go"));
             }
         } 
         
         // Exits command
         else if(com[0].equals("exits")) {
             for(Exit e : Player.getCurrentRoom().exits) {
-                System.out.println(e.name + "/");
+                Printer.print(e.name + "/");
             }
         }
         
+        // Chelp command
         
+        else if(com[0].equals("chelp")) {
+            if(Loader.commandHelp(com[1]) != null) {
+                Printer.print(Loader.commandHelp(com[1]));
+            } else {
+                Printer.print("No help for that command could be found.");
+            }
+        }
     }
 }
