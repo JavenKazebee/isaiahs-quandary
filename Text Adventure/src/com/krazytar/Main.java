@@ -4,8 +4,7 @@ public class Main {
     
     public static void main(String[] args) {
         boolean running = true;
-        Player.setCurrentRoom(Loader.loadRoom(0));
-        Loader.loadRaces();
+        Input.status = Status.MAIN;
         while(running) {
             String in = Input.readInput();
             Input.runCommand(in);
