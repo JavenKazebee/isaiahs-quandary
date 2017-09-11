@@ -1,12 +1,5 @@
 package com.krazytar;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import org.jdom2.*;
-import org.jdom2.output.Format;
-import org.jdom2.output.XMLOutputter;
-
 public class Player {
     static Room currentRoom;
     static Player currentPlayer;

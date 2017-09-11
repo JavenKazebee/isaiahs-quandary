@@ -43,11 +43,12 @@ public class Input {
                     if(sl == SaveLoad.SAVE_NO_EXIST) {
                         Printer.print(Loader.loadMessage("save-no-exist"));
                     } else if (sl == SaveLoad.PLAYER_NO_EXIST) {
-                        Printer.print(Loader.loadMessage("no-char"));
+                        Printer.print(Loader.loadMessage("char-no-exist"));
                         status = Status.CREATE_CHAR;
                     } else {
                         Printer.print(Loader.loadMessage("save-loaded", new String[]{com[1]}));
                         status = Status.NORMAL;
+                        
                     }
                 }
             } else if(com[0].equals("saves")) {

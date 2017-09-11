@@ -3,12 +3,12 @@ package com.krazytar;
 import java.util.ArrayList;
 
 public class Room {
-    int id;
+    String id;
     String name;
     String desc;
     ArrayList<Exit> exits;
     
-    public Room(int pID, String pName, String pDesc, ArrayList<Exit> pExits) {
+    public Room(String pID, String pName, String pDesc, ArrayList<Exit> pExits) {
         id = pID;
         name = pName;
         desc = pDesc;
@@ -16,7 +16,7 @@ public class Room {
         Printer.print(desc);
     }
     
-    public int getID() {
+    public String getID() {
         return id;
     }
     public String getName() {

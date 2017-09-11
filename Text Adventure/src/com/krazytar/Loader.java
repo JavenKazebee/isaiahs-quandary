@@ -11,7 +11,7 @@ import org.jdom2.output.XMLOutputter;
 public class Loader {
     static String currentSave;
     
-    public static Room loadRoom(int id) {
+    public static Room loadRoom(String id) {
         SAXBuilder sb = new SAXBuilder();
         File input = new File("saves/" + currentSave + "/rooms/" + id + ".xml");
         Document doc = null;
@@ -27,7 +27,7 @@ public class Loader {
         if(Tools.checkExists(root.getChild("exits"))) {
             for(Element e : root.getChild("exits").getChildren("exit")) {
             exits.add(new Exit(
-                    Integer.parseInt(e.getChildText("room")), 
+                    e.getChildText("room"),
                     e.getChildText("name"), 
                     Tools.toArrayList(Tools.slashSeperate(e.getChildText("commands")))));
         }
