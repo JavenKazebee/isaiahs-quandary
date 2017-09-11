@@ -1,10 +1,17 @@
 package com.krazytar;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.apache.commons.io.FileUtils;
 
 public class Input {
     public static Status status;
+    static String name;
+    static Race race;
     
     public static String readInput() {
         Scanner in = new Scanner(System.in);
@@ -17,10 +24,10 @@ public class Input {
         // The main menu status
         if(status == Status.MAIN) {
             if(com[0].equals("worlds")) {
-                Printer.print("Here are a list of available worlds.");
+                Printer.print(Loader.loadMessage("avaliable-worlds"));
                 ArrayList<String> worlds = Loader.loadWorlds();
                 for(String s : worlds) {
-                    Printer.print("\n" + s);
+                    Printer.print(" " + s);
                 }
             } else if(com[0].equals("new")) {
                 if(com.length > 2) {
@@ -34,13 +41,29 @@ public class Input {
                 if(com.length > 1) {
                     SaveLoad sl = Loader.loadSave(com[1]);
                     if(sl == SaveLoad.SAVE_NO_EXIST) {
-                        Printer.print("That save does not exist.");
+                        Printer.print(Loader.loadMessage("save-no-exist"));
                     } else if (sl == SaveLoad.PLAYER_NO_EXIST) {
-                        Printer.print("A character has not yet been created for this save.");
+                        Printer.print(Loader.loadMessage("no-char"));
                         status = Status.CREATE_CHAR;
                     } else {
-                        Printer.print("Save loaded!");
+                        Printer.print(Loader.loadMessage("save-loaded", new String[]{com[1]}));
                         status = Status.NORMAL;
+                    }
+                }
+            } else if(com[0].equals("saves")) {
+                Printer.print(Loader.loadMessage("avaliable-saves"));
+                ArrayList<String> saves = Loader.loadSaves();
+                for(String s : saves) {
+                    Printer.print(" " + s);
+                }
+            } else if(com[0].equals("delete")) {
+                if(com.length > 1) {
+                    if(Loader.loadSaves().contains(com[1])) {
+                        try {
+                            FileUtils.deleteDirectory(new File("saves/" + com[1]));
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
+                        }
                     }
                 }
             }
@@ -88,32 +111,52 @@ public class Input {
                 if(Loader.commandHelp(com[1]) != null) {
                     Printer.print(Loader.commandHelp(com[1]));
                 } else {
-                    Printer.print("No help for that command could be found.");
+                    Printer.print(Loader.loadMessage("no-help-found"));
                 }
             }
         }
         
         // The status to create your character
         else if(status == Status.CREATE_CHAR) {
-            String name;
-            Race race;
             
             if(com[0].equals("name")) {
                 if(com.length > 1) {
                     name = com[1];
+                } else {
+                    Printer.print("Syntax: name [char name]");
                 }
             }
             
             else if(com[0].equals("race")) {
-                
+                if(com.length > 1) {
+                    ArrayList<Race> races = Loader.loadRaces();
+                    for(Race r : races) {
+                        if(r.name.equals(com[1])) {
+                            race = r;
+                            Printer.print(Loader.loadMessage("race-selected", new String[] {race.name}));
+                            break;
+                        }
+                    }
+                    
+                    if(race == null) Printer.print(Loader.loadMessage("race-no-exist", new String[] {com[1]}));
+                }
             }
             
             else if(com[0].equals("races")) {
-                
+                for(Race r : Loader.loadRaces()) {
+                        Printer.print(r.name + "\n");
+                    }
             }
             
             else if(com[0].equals("accept")) {
-                
+                if(name != null && race != null) {
+                    Loader.createChar(new Player(name, race));
+                }
+                Printer.print(Loader.loadMessage("char-created"));
+            } 
+            
+            else if(com[0].equals("stats")) {
+                Printer.print(Loader.loadMessage("get-char-stats", new String[] {name, race.name}));
             }
         }
     }
