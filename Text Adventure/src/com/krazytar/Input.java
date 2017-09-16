@@ -4,8 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.apache.commons.io.FileUtils;
 
 public class Input {
@@ -48,7 +46,7 @@ public class Input {
                     } else {
                         Printer.print(Loader.loadMessage("save-loaded", new String[]{com[1]}));
                         status = Status.NORMAL;
-                        
+                        Player.currentRoom = Loader.loadRoom("start");
                     }
                 }
             } else if(com[0].equals("saves")) {

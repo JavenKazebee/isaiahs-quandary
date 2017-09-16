@@ -1,0 +1,12 @@
+<messages>
+  <char-created>Your character was created successfully!</char-created>
+  <get-char-stats>Name: #0 Race: #1</get-char-stats>
+  <race-no-exist>#0 is not a race!</race-no-exist>
+  <race-selected>You have selected #0 as your race.</race-selected>
+  <no-help-found>Help for that command could not be found.</no-help-found>
+  <avaliable-saves>Here are all the avaliable saves:</avaliable-saves>
+  <char-no-exist>This save does not have a character yet!</char-no-exist>
+  <save-no-exist>That save does not exist.</save-no-exist>
+  <save-loaded>The save #0 has been loaded.</save-loaded>
+  <avaliable-worlds>Here are all the avaliable worlds:</avaliable-worlds>
+</messages>

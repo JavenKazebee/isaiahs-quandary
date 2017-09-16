@@ -1,0 +1,7 @@
+<race>
+  <name>elf</name>
+  <desc>Elves have a high intelligence, which makes them ideal for mages.</desc>
+  <int>9</int>
+  <ag>4</ag>
+  <str>3</str>
+</race>

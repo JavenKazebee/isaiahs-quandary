@@ -1,0 +1,13 @@
+<room>
+  <name>The Room to End All Rooms</name>
+  <desc>Before you is the room to end all rooms, the ultimate room of the bunch!</desc>
+
+  <exits>
+    <exit>
+      <name>Wooden Door</name>
+      <commands>door/wooden door</commands>
+      <room>end</room>
+    </exit>
+  </exits>
+
+</room>

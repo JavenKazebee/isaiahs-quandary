@@ -1,0 +1,6 @@
+<commands>
+  <go>Use this command to get around the world. The syntax is: go [insert exit here]</go>
+  <exits>Use this command to list all visible exits. No arguments needed.</exits>
+  <load>Use this command in the main menu to load a specific character. They syntax is: load: [insert character name here]</load>
+  <new>Use this command to create a new world. The syntax is: new [world name] [save name]
+</commands>

@@ -1,0 +1,7 @@
+<race>
+  <name>human</name>
+  <desc>Humans are considered the standard race, with fairly balanced stats all around.</desc>
+  <int>6</int>
+  <ag>6</ag>
+  <str>4</str>
+</race>

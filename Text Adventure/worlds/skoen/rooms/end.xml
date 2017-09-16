@@ -1,0 +1,13 @@
+<room>
+  <name>The Room to Start All Rooms</name>
+  <desc>Before you is the room to start all rooms!</desc>
+
+  <exits>
+    <exit>
+      <name>Golden Door</name>
+      <commands>door/golden door</commands>
+      <room>start</room>
+    </exit>
+  </exits>
+
+</room>
