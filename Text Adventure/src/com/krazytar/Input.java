@@ -153,6 +153,7 @@ public class Input {
                 }
                 Printer.print(Loader.loadMessage("char-created"));
                 status = Status.NORMAL;
+                Player.currentRoom = Loader.loadRoom("start");
             } 
             
             else if(com[0].equals("stats")) {
