@@ -152,6 +152,7 @@ public class Input {
                     Loader.createChar(new Player(name, race));
                 }
                 Printer.print(Loader.loadMessage("char-created"));
+                status = Status.NORMAL;
             } 
             
             else if(com[0].equals("stats")) {
