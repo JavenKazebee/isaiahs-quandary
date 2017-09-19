@@ -1,6 +1,6 @@
 <room>
   <name>The Room to End All Rooms</name>
-  <desc>Before you is the room to end all rooms, the ultimate room of the bunch!</desc>
+  <desc>Before you is the room to end all rooms, the ultimate room of the bunch! A peanut is sitting on the ground.</desc>
 
   <exits>
     <exit>
@@ -9,5 +9,4 @@
       <room>end</room>
     </exit>
   </exits>
-
 </room>

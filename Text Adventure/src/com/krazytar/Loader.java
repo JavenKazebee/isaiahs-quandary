@@ -30,7 +30,7 @@ public class Loader {
                     e.getChildText("room"),
                     e.getChildText("name"), 
                     Tools.toArrayList(Tools.slashSeperate(e.getChildText("commands")))));
-        }
+            }
         }
         
         return new Room(id, name, desc, exits);

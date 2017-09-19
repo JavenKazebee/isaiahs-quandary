@@ -65,6 +65,13 @@ public class Input {
                         }
                     }
                 }
+            } else if(com[0].equals("test")) {
+                Loader.createWorld("skoen", "a");
+                Loader.loadSave("a");
+                Loader.createChar(new Player("george", new Race("elf", "a race", 1, 2, 3)));
+                status = status.NORMAL;
+                Player.currentRoom = Loader.loadRoom("start");
+                Printer.print("Test mode enabled.");
             }
         }
         
